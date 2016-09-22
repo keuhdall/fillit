@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/19 03:46:08 by lmarques          #+#    #+#             */
-/*   Updated: 2016/09/23 01:13:41 by lmarques         ###   ########.fr       */
+/*   Created: BUFF_SIZE16/09/19 03:46:08 by lmarques          #+#    #+#             */
+/*   Updated: 2016/09/23 01:28:18 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_list	*ft_read_file(char *name, int *err)
 {
 	int		fd;
 	int		ret;
-	char	buffer[20 + 1];
+	char	buffer[BUFF_SIZE + 1];
 	char	buffer_empty_line[1];
 	t_list	*list;
 
@@ -56,8 +56,8 @@ t_list	*ft_read_file(char *name, int *err)
 	fd = open(name, O_RDONLY);
 	while (1)
 	{
-		ret = read(fd, buffer, 20);
-		if (ret != 0 && ret != 20 && buffer_empty_line[0] != '\n')
+		ret = read(fd, buffer, BUFF_SIZE);
+		if (ret != 0 && ret != BUFF_SIZE && buffer_empty_line[0] != '\n')
 		{
 			ft_putstr("unvalid file 1\n");
 			*err = -1;
@@ -66,7 +66,7 @@ t_list	*ft_read_file(char *name, int *err)
 		if (ret == 0)
 			break ;
 		buffer[ret] = '\0';
-		ft_lst_push_back(&list, ft_lstnew(buffer, 20));
+		ft_lst_push_back(&list, ft_lstnew(buffer, BUFF_SIZE));
 		ret = read(fd, buffer_empty_line, 1);
 	}
 	return (list);

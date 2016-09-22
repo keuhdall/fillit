@@ -6,12 +6,14 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 23:22:30 by lmarques          #+#    #+#             */
-/*   Updated: 2016/09/23 01:17:58 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/09/23 01:25:16 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
+
+# define BUFF_SIZE 20
 
 # include <stdio.h>
 # include <fcntl.h>

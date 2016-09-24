@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 03:46:08 by lmarques          #+#    #+#             */
-/*   Updated: 2016/09/23 01:34:21 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/09/24 02:17:51 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	ft_print_list(t_list *lst)
 			ft_putstr("unvalid file 2\n");
 		else
 			ft_putstr("OK !\n");
-		printf("len : %d\n", ft_strlen((char *)lst->content));
+		printf("length : %d\n", ft_get_length((char *)lst->content));
+		printf("height : %d\n", ft_get_height((char *)lst->content));
 		lst = lst->next;
 	}
 }

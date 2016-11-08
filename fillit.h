@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 23:22:30 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/08 01:30:03 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/08 14:02:45 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # include <stdio.h>
 # include <fcntl.h>
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 
 typedef struct			s_point
 {
@@ -32,15 +32,17 @@ typedef struct			s_etri
 	int					height;
 	t_point				pos;
 	t_point				*blocs;
-	t_point				top;
-	t_point				bottom;
+	t_point				min;
+	t_point				max;
 }						t_etri;
 
-void					ft_print_list(t_list *lst);
+void					ft_print_tetri(t_etri tetri);
 t_list					*ft_read_file(char *name, int *err);
 int						ft_is_valid(char *str);
-int						ft_get_width(const char *str);
-int						ft_get_height(const char *str);
+t_etri					ft_create_tetri(const char *str);
+void					ft_get_size(const char *str, int *height, int *width);
+void					ft_get_min_max(const char *str, t_point *min,
+						t_point *max);
 t_point					ft_get_pos(const char *str);
 t_point					*ft_get_blocs(const char *str);
 

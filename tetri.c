@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solver.c                                           :+:      :+:    :+:   */
+/*   tetri.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 01:16:48 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/07 18:32:59 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/08 01:33:52 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,30 @@ int		ft_get_width(const char *str)
 	return (count_width);
 }
 
+t_point	ft_get_pos(const char *str)
+{
+	int		count;
+	t_point	pos;
+
+	count = 0;
+	while (str[count])
+	{
+		if (str[count] == '#')
+		{
+			pos.x = count % 5;
+			pos.y = count / 5; // COULD BE WRONG !
+			return (pos);
+		}
+		count++;
+	}
+	pos.x = 0;
+	pos.y = 0;
+	return (pos);
+}
+
 t_point	*ft_get_blocs(const char *str)
 {
-	static t_point	bloc[4];
+	t_point			*bloc;
 	int				count_str;
 	int				count_blocs;
 
@@ -65,22 +86,10 @@ t_point	*ft_get_blocs(const char *str)
 		if (str[count_str] == '#')
 		{
 			bloc[count_blocs].x = count_str % 5;
-			bloc[count_blocs].y = (count_str / 5) - 1;
+			bloc[count_blocs].y = (count_str / 5); // COULD BE WRONG !
 			count_blocs++;
 		}
 		count_str++;
 	}
 	return (bloc);
-}
-
-t_etri	ft_create_tetri(char *str)
-{
-	t_etri		tetri;
-	static char	c = 'A';
-
-	tetri.width = ft_get_width(str);
-	tetri.height = ft_get_height(str);
-	tetri.c = c;
-	c++;
-	return (tetri);
 }

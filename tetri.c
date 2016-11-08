@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 01:16:48 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/08 14:02:58 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/08 21:59:23 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,44 +21,25 @@ void	ft_get_size(const char *str, int *height, int *width)
 	swap = 0;
 	*height = 0;
 	*width = 0;
-	while (str[count++])
+	while (count < 20)
 	{
-		if (str[count] == '#' && swap == 0)
+		if (str[count] && str[count] == '#' && swap == 0)
 		{
 			(*height)++;
 			swap = 1;
 		}
 		if (str[count] == '\n')
 			swap = 0;
+		count++;
 	}
 	count = 0;
-	while (count++ <= 4)
+	while (count <= 4)
 	{
 		if (str[count] == '#' || str[count + 5] == '#' ||
 			str[count + 10] == '#' || str[count + 15] == '#')
 			(*width)++;
-	}
-}
-
-t_point	ft_get_pos(const char *str)
-{
-	int		count;
-	t_point	pos;
-
-	count = 0;
-	while (str[count])
-	{
-		if (str[count] == '#')
-		{
-			pos.x = count % 5;
-			pos.y = count / 5;
-			return (pos);
-		}
 		count++;
 	}
-	pos.x = 0;
-	pos.y = 0;
-	return (pos);
 }
 
 t_point	*ft_get_blocs(const char *str)
@@ -71,7 +52,7 @@ t_point	*ft_get_blocs(const char *str)
 		bloc = NULL;
 	count_str = 0;
 	count_blocs = 0;
-	while (str[count_str])
+	while (count_str < 20)
 	{
 		if (str[count_str] == '#')
 		{
@@ -93,7 +74,7 @@ void	ft_get_min_max(const char *str, t_point *min, t_point *max)
 	min->y = 3;
 	max->x = 0;
 	max->y = 0;
-	while (str[count])
+	while (count < 20)
 	{
 		if (str[count] == '#')
 		{
@@ -110,6 +91,18 @@ void	ft_get_min_max(const char *str, t_point *min, t_point *max)
 	}
 }
 
+int		ft_push_back_tetri(t_etri **tab, t_etri tetri)
+{
+	static int	count = 0;
+
+	if (count <= 25)
+	{
+		(*tab)[count] = tetri;
+		count++;
+	}
+	return (count);
+}
+
 t_etri	ft_create_tetri(const char *str)
 {
 	t_etri		tetri;
@@ -118,7 +111,6 @@ t_etri	ft_create_tetri(const char *str)
 	tetri.c = c;
 	ft_get_size(str, &tetri.height, &tetri.width);
 	ft_get_min_max(str, &tetri.min, &tetri.max);
-	tetri.pos = ft_get_pos(str);
 	tetri.blocs = ft_get_blocs(str);
 	c++;
 	return (tetri);

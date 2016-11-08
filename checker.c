@@ -6,51 +6,71 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 23:22:08 by lmarques          #+#    #+#             */
-/*   Updated: 2016/09/23 01:17:25 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/08 21:28:25 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_count_blocks(char *str)
+#include "fillit.h"
+
+int		ft_count_blocs(const char *str)
 {
 	int	count;
-	int	count_block;
+	int	count_blocs;
 
 	count = 0;
-	count_block = 0;
-	while (str[count])
+	count_blocs = 0;
+	while (count < 20)
 	{
 		if (str[count] == '#')
-			count_block++;
+			count_blocs++;
 		count++;
 	}
-	return (count_block);
+	return (count_blocs);
+}
+
+int		ft_check_endline(const char *str)
+{
+	int	count;
+
+	count = 0;
+	while (count < 20)
+	{
+		if (str[count] == '\n')
+		{
+			if (count != 4 && count != 9 && count != 14 && count != 19)
+				return (0);
+		}
+		count++;
+	}
+	return (1);
 }
 
 int		ft_is_valid(char *str)
 {
 	int	count;
-	int	count_block;
+	int	count_blocs;
 
 	count = 0;
-	count_block = 0;
-	while (str[count])
+	count_blocs = 0;
+	while (count < 20)
 	{
 		if (str[count] != '.' && str[count] != '\n' && str[count] != '#')
 			return (0);
 		if (str[count] == '#')
 		{
-			if (str[count - 1] && str[count - 1] == '#')
-				count_block++;
-			if (str[count + 1] && str[count + 1] == '#')
-				count_block++;
-			if (str[count - 5] && str[count - 5] == '#')
-				count_block++;
-			if (str[count + 5] && str[count + 5] == '#')
-				count_block++;
+			if ((count + 1) < 20 && str[count + 1] == '#')
+				count_blocs++;
+			if ((count - 1) >= 0 && str[count - 1] == '#')
+				count_blocs++;
+			if ((count + 5) < 20 && str[count + 5] == '#')
+				count_blocs++;
+			if ((count - 5) >= 0 && str[count - 5] == '#')
+				count_blocs++;
 		}
 		count++;
 	}
-	if ((count_block == 6 || count_block == 8) && ft_count_blocks(str) == 4)
+	if ((count_blocs == 6 || count_blocs == 8) && ft_count_blocs(str) == 4 && 
+		ft_check_endline(str))
 		return (1);
 	return (0);
 }

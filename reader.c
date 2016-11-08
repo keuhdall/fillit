@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 03:46:08 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/07 14:50:39 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/08 01:23:36 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_print_list(t_list *lst)
 		else
 		{
 			ft_putstr("OK !\n");
-			printf("length : %d\n", ft_get_length((char *)lst->content));
+			printf("length : %d\n", ft_get_width((char *)lst->content));
 			printf("height : %d\n", ft_get_height((char *)lst->content));
 		}
 		lst = lst->next;

@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 03:46:08 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/08 14:00:28 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/08 22:00:43 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_print_tetri(t_etri tetri)
 {
 	printf("char : %c\n", tetri.c);
 	printf("height : %d, width : %d\n", tetri.height, tetri.width);
-	printf("pos : %d;%d\n", tetri.pos.x, tetri.pos.y);
 	for (int i = 0; i <= 3; i++) {
 		printf("pos bloc[%d], %d;%d\n", i, tetri.blocs[i].x, tetri.blocs[i].y);
 	}

@@ -6,26 +6,22 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 03:46:08 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/08 01:23:36 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/08 14:00:28 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_print_list(t_list *lst)
+void	ft_print_tetri(t_etri tetri)
 {
-	while (lst)
-	{
-		if (!ft_is_valid((char *)lst->content))
-			ft_putstr("unvalid file 2\n");
-		else
-		{
-			ft_putstr("OK !\n");
-			printf("length : %d\n", ft_get_width((char *)lst->content));
-			printf("height : %d\n", ft_get_height((char *)lst->content));
-		}
-		lst = lst->next;
+	printf("char : %c\n", tetri.c);
+	printf("height : %d, width : %d\n", tetri.height, tetri.width);
+	printf("pos : %d;%d\n", tetri.pos.x, tetri.pos.y);
+	for (int i = 0; i <= 3; i++) {
+		printf("pos bloc[%d], %d;%d\n", i, tetri.blocs[i].x, tetri.blocs[i].y);
 	}
+	printf("min : %d;%d max : %d;%d\n", tetri.min.x, tetri.min.y, tetri.max.x, tetri.max.y);
+	ft_putchar('\n');
 }
 
 t_list	*ft_read_file(char *name, int *err)

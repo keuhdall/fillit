@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 01:02:36 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/08 21:48:06 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/09 18:26:51 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ char	*ft_init_map(char *map)
 	int	count;
 
 	count = 0;
-	if (!(map = (char *)malloc(sizeof(char) * 16 * 16 + 1)))
+	if (!(map = (char *)malloc(sizeof(char) * 16 * 16)))
 		return (NULL);
-	while (count <= (16 * 16))
+	while (count <= (16 * 16 - 1))
 	{
-		map[count] = '.';
+		if ((count + 1) % 16 == 0)
+			map[count] = '\n';
+		else
+			map[count] = '.';
 		count++;
 	}
 	map[count] = '\0';
@@ -55,13 +58,14 @@ int		main(int argc, char *argv[])
 		}
 		else
 		{
-			ft_putstr_fd("unvalid file (2)\n", 2);
+			ft_putendl("error");
 			return (-1);
 		}
 		list = list->next;
 	}
 	while (i--)
 		ft_print_tetri(tab[i]);
+	//ft_putstr(map);
 	argc++;
 	return (0);
 }

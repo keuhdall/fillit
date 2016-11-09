@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 03:46:08 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/08 22:00:43 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/09 17:31:12 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_list	*ft_read_file(char *name, int *err)
 		ret = read(fd, buffer, BUFF_SIZE);
 		if (ret != 0 && ret != BUFF_SIZE && buffer_empty_line[0] != '\n')
 		{
-			ft_putstr("unvalid file 1\n");
+			ft_putendl("error");
 			*err = -1;
 			break ;
 		}

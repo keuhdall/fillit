@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 01:16:48 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/10 11:29:48 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/10 20:14:42 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,20 @@ void	ft_get_size(const char *str, int *height, int *width)
 			swap = 0;
 		count++;
 	}
-	count = 0;
-	while (count <= 4)
+	count = -1;
+	while (++count <= 4)
 	{
 		if (str[count] == '#' || str[count + 5] == '#' ||
 			str[count + 10] == '#' || str[count + 15] == '#')
 			(*width)++;
-		count++;
 	}
 }
 
 t_point	*ft_get_blocs(const char *str)
 {
-	t_point			*bloc;
-	int				count_str;
-	int				count_blocs;
+	t_point	*bloc;
+	int		count_str;
+	int		count_blocs;
 
 	if (!(bloc = (t_point *)malloc(sizeof(t_point) * 4)))
 		bloc = NULL;

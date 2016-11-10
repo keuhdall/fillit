@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 23:22:08 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/08 21:28:25 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/10 18:37:49 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int		ft_check_endline(const char *str)
 		}
 		count++;
 	}
+	if (str[4] != '\n' || str[9] != '\n' || str[14] != '\n' || str[19] != '\n')
+		return (0);
 	return (1);
 }
 
@@ -69,8 +71,6 @@ int		ft_is_valid(char *str)
 		}
 		count++;
 	}
-	if ((count_blocs == 6 || count_blocs == 8) && ft_count_blocs(str) == 4 && 
-		ft_check_endline(str))
-		return (1);
-	return (0);
+	return ((count_blocs == 6 || count_blocs == 8) &&
+			ft_count_blocs(str) == 4 && ft_check_endline(str) ? 1 : 0);
 }

@@ -6,22 +6,11 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 03:46:08 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/09 17:31:12 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/10 19:05:04 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-void	ft_print_tetri(t_etri tetri)
-{
-	printf("char : %c\n", tetri.c);
-	printf("height : %d, width : %d\n", tetri.height, tetri.width);
-	for (int i = 0; i <= 3; i++) {
-		printf("pos bloc[%d], %d;%d\n", i, tetri.blocs[i].x, tetri.blocs[i].y);
-	}
-	printf("min : %d;%d max : %d;%d\n", tetri.min.x, tetri.min.y, tetri.max.x, tetri.max.y);
-	ft_putchar('\n');
-}
 
 t_list	*ft_read_file(char *name, int *err)
 {
@@ -38,7 +27,6 @@ t_list	*ft_read_file(char *name, int *err)
 		ret = read(fd, buffer, BUFF_SIZE);
 		if (ret != 0 && ret != BUFF_SIZE && buffer_empty_line[0] != '\n')
 		{
-			ft_putendl("error");
 			*err = -1;
 			break ;
 		}

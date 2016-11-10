@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 01:02:36 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/09 18:26:51 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/10 19:17:38 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,68 @@ char	*ft_init_map(char *map)
 	int	count;
 
 	count = 0;
-	if (!(map = (char *)malloc(sizeof(char) * 16 * 16)))
+	if (!(map = (char *)malloc(sizeof(char) * 16 * 16 + 1)))
 		return (NULL);
 	while (count <= (16 * 16 - 1))
 	{
-		if ((count + 1) % 16 == 0)
-			map[count] = '\n';
-		else
-			map[count] = '.';
+		map[count] = '.';
 		count++;
 	}
 	map[count] = '\0';
 	return (map);
 }
 
+void	ft_print_map(char *map, int size)
+{
+	int	count;
+	int	count2;
+
+	count = 0;
+	while (count < size)
+	{
+		count2 = 0;
+		while (count2 < size)
+		{
+			ft_putchar(map[(count * 16) + count2]);
+			count2++;
+		}
+		ft_putchar('\n');
+		count++;
+	}
+}
+
+int		ft_init(t_list *list, t_etri **tab, int *i)
+{
+	t_etri	tetri;
+
+	if (*i == -1)
+	{
+		ft_putendl("error");
+		return (0);
+	}
+	while (list)
+	{
+		if (ft_is_valid((char *)list->content))
+		{
+			tetri = ft_create_tetri((char *)list->content);
+			ft_set_in_corner(&tetri, (char *)list->content);
+			*i = ft_push_back_tetri(*(&tab), tetri);
+		}
+		else if (!ft_is_valid((char *)list->content) || *i > 25)
+		{
+			ft_putendl("error");
+			return (0);
+		}
+		list = list->next;
+	}
+	return (1);
+}
+
 int		main(int argc, char *argv[])
 {
 	int		i;
+	int		size;
 	t_etri	*tab;
-	t_etri	tetri;
 	t_list	*list;
 	char	*map;
 
@@ -46,26 +89,14 @@ int		main(int argc, char *argv[])
 	list = ft_read_file(argv[1], &i);
 	map = NULL;
 	map = ft_init_map(map);
-	if (i == -1)
+	if (i == -1 || !ft_init(list, &tab, &i) || argc != 2)
 		return (-1);
-	while (list)
+	size = (tab[0].height > tab[0].width ? tab[0].height : tab[0].width);
+	while (!ft_move_tetri(map, &tab[0], size, i))
 	{
-		if (ft_is_valid((char *)list->content))
-		{
-			tetri = ft_create_tetri((char *)list->content);
-			ft_set_in_corner(&tetri, (char *)list->content);
-			i = ft_push_back_tetri(&tab, tetri);
-		}
-		else
-		{
-			ft_putendl("error");
-			return (-1);
-		}
-		list = list->next;
+		ft_init_map(map);
+		size++;
 	}
-	while (i--)
-		ft_print_tetri(tab[i]);
-	//ft_putstr(map);
-	argc++;
+	ft_print_map(map, size);
 	return (0);
 }

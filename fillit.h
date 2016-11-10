@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 23:22:30 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/10 11:27:05 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/10 16:46:11 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ void					ft_get_min_max(const char *str, t_point *min,
 int						ft_push_back_tetri(t_etri **tab, t_etri tetri);
 void					ft_set_in_corner(t_etri *tetri, const char *str);
 t_point					*ft_get_blocs(const char *str);
+int						ft_move_tetri(char *map, t_etri *tetri, int size,
+						int tab_size);
 
 #endif

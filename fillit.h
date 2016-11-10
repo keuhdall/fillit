@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 23:22:30 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/08 16:20:27 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/10 11:27:05 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct			s_etri
 	int					width;
 	int					height;
 	t_point				*blocs;
+	t_point				offset;
 	t_point				min;
 	t_point				max;
 }						t_etri;

@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 01:16:48 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/08 21:59:23 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/10 11:29:48 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ t_etri	ft_create_tetri(const char *str)
 	static char	c = 'A';
 
 	tetri.c = c;
+	tetri.offset.x = 0;
+	tetri.offset.y = 0;
 	ft_get_size(str, &tetri.height, &tetri.width);
 	ft_get_min_max(str, &tetri.min, &tetri.max);
 	tetri.blocs = ft_get_blocs(str);

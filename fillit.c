@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 01:02:36 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/10 19:17:38 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/11 13:57:28 by cprouveu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,13 @@ int		ft_init(t_list *list, t_etri **tab, int *i)
 	return (1);
 }
 
+void	ft_free(t_list **list, t_etri **tab, char **map)
+{
+	free(*list);
+	free(*tab);
+	free(*map);
+}
+
 int		main(int argc, char *argv[])
 {
 	int		i;
@@ -98,5 +105,6 @@ int		main(int argc, char *argv[])
 		size++;
 	}
 	ft_print_map(map, size);
+	ft_free(&list, &tab, &map);
 	return (0);
 }

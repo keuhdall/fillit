@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 23:22:30 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/10 16:46:11 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/10 22:52:19 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # include <stdio.h>
 # include <fcntl.h>
-# include "../../libft/libft.h"
+# include "libft/libft.h"
 
 typedef struct			s_point
 {

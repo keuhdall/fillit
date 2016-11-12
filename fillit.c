@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 01:02:36 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/11 17:37:26 by lmarques         ###   ########.fr       */
+/*   Updated: 2016/11/12 11:56:36 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,11 @@ int		ft_init(t_list *list, t_etri **tab, int *i)
 	return (1);
 }
 
-void	ft_free(t_list **list, char **map)
+void	ft_free(t_list **list, char **map, t_etri **tab)
 {
 	free(*list);
 	free(*map);
+	free(*tab);
 }
 
 int		main(int argc, char *argv[])
@@ -89,7 +90,7 @@ int		main(int argc, char *argv[])
 	char	*map;
 
 	i = 0;
-	if (!(tab = (t_etri *)malloc(sizeof(t_etri *) * 26)))
+	if (!(tab = (t_etri *)malloc(sizeof(t_etri) * 26)))
 		tab = NULL;
 	list = NULL;
 	list = ft_read_file(argv[1], &i);
@@ -104,6 +105,6 @@ int		main(int argc, char *argv[])
 		size++;
 	}
 	ft_print_map(map, size);
-	ft_free(&list, &map);
+	ft_free(&list, &map, &tab);
 	return (0);
 }

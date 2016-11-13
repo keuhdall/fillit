@@ -6,7 +6,7 @@
 /*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 03:46:08 by lmarques          #+#    #+#             */
-/*   Updated: 2016/11/11 13:50:22 by cprouveu         ###   ########.fr       */
+/*   Updated: 2016/11/13 19:57:38 by lmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_list	*ft_read_file(char *name, int *err)
 		ft_lst_push_back(&list, ft_lstnew(buffer, BUFF_SIZE));
 		ret[1] = read(fd, buffer_empty_line, 1);
 	}
-	if (ret[1] == 1 || *err == -1)
+	if (ret[1] == 1 || *err == -1 || !list)
 	{
 		*err = -1;
 		ft_putendl("error");
